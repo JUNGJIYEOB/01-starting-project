@@ -1,31 +1,16 @@
-import { CORE_CONCEPTS } from './data.js';
+import CoreConcept from './componets/CoreConcepts.jsx';
+import Header from './componets/Header.jsx';
+import { CORE_CONCEPTS } from './data.js'; //이름이 대문자로 시작하는 것 매우 중요
+/*
+*		+> 컴포넌트는 대문자로 시작 해야 함수
+		+> 함수에서 렌더링 가능한 값이 반환되어야 함
+		+> 한 파일에 컨포넌트가 많을 수록 찾기도 어려워지고 무거워짐
+			++>두 개의 컴포넌트의 연관성이 매우 높거나 둘이 함께 있어야 작동하는 경우는 예외
+*
+*/
 
 
-const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-function CoreConcept({image,title,description}){
-  return <li>
-    <img src={image} alt={title}/>
-    <h3>{title}</h3>
-    <p>{description}</p>
-
-  </li>
-}
-
-function Header() {
-  return (
-    <header>
-      <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        Fundamental React concepts you will need for almost any app you are going to build!
-      </p>
-    </header>
-  );
-}
 
 function App() {
   return (
