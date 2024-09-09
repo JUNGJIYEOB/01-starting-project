@@ -29,3 +29,44 @@
 	->커스텀 컴포넌트는 자바스크립트 함수로 생성될 수 있다.<BR/><BR/>
 	-> JSX에서 커스텀 컴포넌트를 사용하려면, 첫 무자가 대문자여야 한다.<BR/>
 	-> 커스텀 컴포넌트는 무조건 렌더링할 수 있는 내용을 반환해야 한다.(주로JSX)<BR/>
+
+
+
+
+
+
+<컴포넌트 합성>
+	: 컴포넌트가 다른 컴포넌트나 내용을 감싸서 컴포넌트를 구축하는 것<br><br>
+
+1.Using "children"<br>
+<children Prop><br>
+	: 컴포넌트 사이  내용 의미(필요에 따른 복잡한 jsx 구조, 단순 String 도 가능)<br><br>
+	
+
+ex)<br>
+	*App Component<br>
+		<Modal><br>
+			<h2>Warnning<h2><br>
+			<p>Do you want to delete this file?</p><br>
+		</Modal><br><br>
+		
+	*Modal Component<br>
+		1)	<br>
+			function Modal(props){<br>
+				return <div id='modal'>{props.children}</div>;<br>
+			}<br><br>
+			
+		2)객체 구조 분해	<br>
+			function Modal({children}){<br>
+				return <div id='modal'>{children}</div>;<br>
+			}<br><br>
+			
+2.Using Attributes<br>
+	*App Component<br>
+		<Modal label='Component'><br>
+		</Modal><br><br>
+		
+	*Modal Component<br>
+		function Modal({label}){<br>
+			return <div id='modal'>{label}</div>;<br>
+		}<br>
