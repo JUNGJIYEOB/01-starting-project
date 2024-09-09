@@ -1,5 +1,6 @@
 import CoreConcept from './componets/CoreConcept/CoreConcept.jsx';
 import Header from './componets/Header/Header.jsx';
+import TabButton from './componets/TabButton.jsx';
 import { CORE_CONCEPTS } from './data.js'; //이름이 대문자로 시작하는 것 매우 중요
 /*
 *		+> 컴포넌트는 대문자로 시작 해야 함수
@@ -27,11 +28,17 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[1]}/>
             <CoreConcept {...CORE_CONCEPTS[2]}/>
             <CoreConcept {...CORE_CONCEPTS[3]}/>
-           
-
           </ul>
         </section>
-        
+        <section id='examples'> 
+          <h2>Exmaple</h2>
+          <menu>
+             <TabButton>Components</TabButton> 
+             <TabButton>JSX</TabButton> 
+             <TabButton>Props</TabButton> 
+             <TabButton>State</TabButton> 
+          </menu>
+        </section>
       </main>
     </div>
   );
