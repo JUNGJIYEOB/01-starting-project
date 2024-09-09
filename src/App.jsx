@@ -1,5 +1,5 @@
-import CoreConcept from './componets/CoreConcepts.jsx';
-import Header from './componets/Header.jsx';
+import CoreConcept from './componets/CoreConcept/CoreConcept.jsx';
+import Header from './componets/Header/Header.jsx';
 import { CORE_CONCEPTS } from './data.js'; //이름이 대문자로 시작하는 것 매우 중요
 /*
 *		+> 컴포넌트는 대문자로 시작 해야 함수
@@ -8,8 +8,6 @@ import { CORE_CONCEPTS } from './data.js'; //이름이 대문자로 시작하는
 			++>두 개의 컴포넌트의 연관성이 매우 높거나 둘이 함께 있어야 작동하는 경우는 예외
 *
 */
-
-
 
 
 function App() {

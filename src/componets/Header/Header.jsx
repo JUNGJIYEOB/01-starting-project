@@ -1,4 +1,6 @@
-import reactImg from '../assets/react-core-concepts.png';
+import reactImg from '../../assets/react-core-concepts.png';
+import './Header.css';
+//연관 컴포넌트를 파일로 묶는 것은 필수는 아니지만 유지보수 및 찾을때 용이
 
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
