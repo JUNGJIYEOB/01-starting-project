@@ -16,12 +16,33 @@ import { CORE_CONCEPTS } from './data.js'; //이름이 대문자로 시작하는
 
 function App() {
   const [selectedTopic,setSelectedTopic] =useState('components');//useState를 사용할 때 나오는 요소는 항상 2개
+  const [count, setCount] = useState(0);
+  //const [title, setCount] = useState(0);
+  //01. title 상태를 가져오는 const 선언
+
+  //02. app.jsx title 출력
+
+  //03. 하위 CoreConcept으로 props 전달
+
+  //04. input만들어서 value 타이핑한 내용이, title로 들어가게
+
+  console.log(selectedTopic);
+  
+  const onIncrease = () => {
+    setCount(prevCount => prevCount + 1);
+  };
+  const onDecrease = () => {
+    setCount(prevCount => prevCount - 1);
+  };
+
   
   function handleClick(selectButton){
     //selectButton => 'components','jsx','props','state'
     console.log('selectButton : ',selectButton);
     setSelectedTopic(selectButton); 
-}
+  }
+
+
   return (
     <div>
       <Header />
@@ -29,11 +50,14 @@ function App() {
         <section id='core-concepts' >
           <h2>Core Concepts</h2>
           <ul>
-            
+            <label>{count}</label>
+            <button onClick={onIncrease}>+1</button>
+            <button onClick={onDecrease}>-1</button>
             <CoreConcept 
               title={CORE_CONCEPTS[0].title}
               description={CORE_CONCEPTS[0].description}
               image={CORE_CONCEPTS[0].image}
+              count={count}
             />
             <CoreConcept {...CORE_CONCEPTS[1]}/>
             <CoreConcept {...CORE_CONCEPTS[2]}/>
