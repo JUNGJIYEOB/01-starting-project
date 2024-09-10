@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import CoreConcept from './componets/CoreConcept/CoreConcept.jsx';
 import Header from './componets/Header/Header.jsx';
 import TabButton from './componets/TabButton.jsx';
+import { EXAMPLES } from './data.js';
+
 import { CORE_CONCEPTS } from './data.js'; //이름이 대문자로 시작하는 것 매우 중요
 /*
 *		+> 컴포넌트는 대문자로 시작 해야 함수
@@ -12,6 +15,13 @@ import { CORE_CONCEPTS } from './data.js'; //이름이 대문자로 시작하는
 
 
 function App() {
+  const [selectedTopic,setSelectedTopic] =useState('components');//useState를 사용할 때 나오는 요소는 항상 2개
+  
+  function handleClick(selectButton){
+    //selectButton => 'components','jsx','props','state'
+    console.log('selectButton : ',selectButton);
+    setSelectedTopic(selectButton); 
+}
   return (
     <div>
       <Header />
@@ -33,11 +43,20 @@ function App() {
         <section id='examples'> 
           <h2>Exmaple</h2>
           <menu>
-             <TabButton>Components</TabButton> 
-             <TabButton>JSX</TabButton> 
-             <TabButton>Props</TabButton> 
-             <TabButton>State</TabButton> 
+             <TabButton onSelect={()=>handleClick('components')}>Components</TabButton> 
+             <TabButton onSelect={()=>handleClick('jsx')}>JSX</TabButton> 
+             <TabButton onSelect={()=>handleClick('props')}>Props</TabButton> 
+             <TabButton onSelect={()=>handleClick('state')}>State</TabButton> 
           </menu>
+          <div id='tab-content'>
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+              {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
