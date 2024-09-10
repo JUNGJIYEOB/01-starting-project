@@ -2,9 +2,8 @@ import { useState } from 'react';
 import CoreConcept from './componets/CoreConcept/CoreConcept.jsx';
 import Header from './componets/Header/Header.jsx';
 import TabButton from './componets/TabButton.jsx';
-import { EXAMPLES } from './data.js';
 
-import { CORE_CONCEPTS } from './data.js'; //이름이 대문자로 시작하는 것 매우 중요
+import { CORE_CONCEPTS, EXAMPLES } from './data.js'; //이름이 대문자로 시작하는 것 매우 중요
 /*
 *		+> 컴포넌트는 대문자로 시작 해야 함수
 		+> 함수에서 렌더링 가능한 값이 반환되어야 함
@@ -15,9 +14,9 @@ import { CORE_CONCEPTS } from './data.js'; //이름이 대문자로 시작하는
 
 
 function App() {
-  const [selectedTopic,setSelectedTopic] =useState('components');//useState를 사용할 때 나오는 요소는 항상 2개
+  const [selectedTopic,setSelectedTopic] =useState('');//useState를 사용할 때 나오는 요소는 항상 2개
   const [count, setCount] = useState(0);
-  //const [title, setCount] = useState(0);
+  const [title, setTitle] = useState(0);
   //01. title 상태를 가져오는 const 선언
 
   //02. app.jsx title 출력
@@ -44,15 +43,12 @@ function App() {
 
 
   return (
-    <div>
+    <div> 
       <Header />
       <main>
         <section id='core-concepts' >
           <h2>Core Concepts</h2>
           <ul>
-            <label>{count}</label>
-            <button onClick={onIncrease}>+1</button>
-            <button onClick={onDecrease}>-1</button>
             <CoreConcept 
               title={CORE_CONCEPTS[0].title}
               description={CORE_CONCEPTS[0].description}
@@ -72,15 +68,39 @@ function App() {
              <TabButton onSelect={()=>handleClick('props')}>Props</TabButton> 
              <TabButton onSelect={()=>handleClick('state')}>State</TabButton> 
           </menu>
-          <div id='tab-content'>
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>
-              {EXAMPLES[selectedTopic].code}
-              </code>
-            </pre>
-          </div>
+          {/* 
+            null : JSX 코드로 출력할 수 있으며 단순히 아무것도 렌더링 되지 않는 것
+            {!selectedTopic?(<p>Please selct a topic</p>):null}
+            {selectedTopic?(
+            <div id='tab-content'>
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+                
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>
+                {EXAMPLES[selectedTopic].code}
+                </code>
+              </pre>
+            </div>
+          ) :null}
+        */}
+        {!selectedTopic?(<p>Please selct a topic</p>)
+        :( 
+        <div id='tab-content'>
+          <h3>{EXAMPLES[selectedTopic].title}</h3>
+          <p>{EXAMPLES[selectedTopic].description}</p>
+          <pre>
+            <code>
+            {EXAMPLES[selectedTopic].code}
+            </code>
+          </pre>
+        </div>
+        )}
+        </section>
+        <section>
+            <label>{count}</label>
+            <button onClick={onIncrease}>+1</button>
+            <button onClick={onDecrease}>-1</button>
         </section>
       </main>
     </div>
