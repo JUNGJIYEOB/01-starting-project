@@ -1,9 +1,9 @@
-import { useState } from "react";
-import CoreConcept from "./componets/CoreConcept/CoreConcept.jsx";
-import Header from "./componets/Header/Header.jsx";
-import TabButton from "./componets/TabButton.jsx";
+import { useState } from 'react';
+import CoreConcept from './componets/CoreConcept/CoreConcept.jsx';
+import Header from './componets/Header/Header.jsx';
+import TabButton from './componets/TabButton.jsx';
 
-import { CORE_CONCEPTS, EXAMPLES } from "./data.js"; //이름이 대문자로 시작하는 것 매우 중요
+import { CORE_CONCEPTS, EXAMPLES } from './data.js'; //이름이 대문자로 시작하는 것 매우 중요
 /*
 *		+> 컴포넌트는 대문자로 시작 해야 함수
 		+> 함수에서 렌더링 가능한 값이 반환되어야 함
@@ -13,15 +13,12 @@ import { CORE_CONCEPTS, EXAMPLES } from "./data.js"; //이름이 대문자로 �
 */
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState(""); //useState를 사용할 때 나오는 요소는 항상 2개
+  const [selectedTopic, setSelectedTopic] = useState(''); //useState를 사용할 때 나오는 요소는 항상 2개
   const [count, setCount] = useState(0);
   const [title, setTitle] = useState(0);
   //01. title 상태를 가져오는 const 선언
-
   //02. app.jsx title 출력
-
   //03. 하위 CoreConcept으로 props 전달
-
   //04. input만들어서 value 타이핑한 내용이, title로 들어가게
 
   console.log(selectedTopic);
@@ -35,14 +32,14 @@ function App() {
 
   function handleClick(selectButton) {
     //selectButton => 'components','jsx','props','state'
-    console.log("selectButton : ", selectButton);
+    console.log('selectButton : ', selectButton);
     setSelectedTopic(selectButton);
   }
   //1.조건부 랜더링_컴포넌트 내부에서 if문 내부에서 변수에 재할당
   let tabContents = <p>Please selct a topic</p>;
   if (selectedTopic) {
     tabContents = (
-      <div id="tab-content">
+      <div id='tab-content'>
         <h3>{EXAMPLES[selectedTopic].title}</h3>
 
         <p>{EXAMPLES[selectedTopic].description}</p>
@@ -57,7 +54,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <section id="core-concepts">
+        <section id='core-concepts'>
           <h2>Core Concepts</h2>
           <ul>
             <CoreConcept
@@ -71,15 +68,33 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
         </section>
-        <section id="examples">
+        <section id='examples'>
           <h2>Exmaple</h2>
           <menu>
-            <TabButton onSelect={() => handleClick("components")}>
+            <TabButton
+              isSelected={selectedTopic === 'components'}
+              onSelect={() => handleClick('components')}
+            >
               Components
             </TabButton>
-            <TabButton onSelect={() => handleClick("jsx")}>JSX</TabButton>
-            <TabButton onSelect={() => handleClick("props")}>Props</TabButton>
-            <TabButton onSelect={() => handleClick("state")}>State</TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'jsx'}
+              onSelect={() => handleClick('jsx')}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'props'}
+              onSelect={() => handleClick('props')}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'state'}
+              onSelect={() => handleClick('state')}
+            >
+              State
+            </TabButton>
           </menu>
           {/* 
             1.조건부 랜더링
@@ -133,7 +148,7 @@ function App() {
           ) }
          */}
           {/*1.조건부 랜더링
-           * 3)컴포넌트 내부에서 if문 내부에서 변수에 재할당
+           *  3)컴포넌트 내부에서 if문 내부에서 변수에 재할당
            */}
           {tabContents}
         </section>

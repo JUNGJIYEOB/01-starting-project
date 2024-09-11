@@ -1,4 +1,4 @@
-export default function TabButton({children,onSelect}){
+export default function TabButton({children,onSelect,isSelected}){
    /*
     // onSelect => on 으로 시작하면 특정 이벤트에 기반해 실행되는 함수에 의해 실행된다는 것을 명시 +역할
     //특정 이벤트가 발생할 때 호출해야 하는 함수는 이와 같이 작명 하는 것이 보통임
@@ -19,6 +19,6 @@ export default function TabButton({children,onSelect}){
     */
     //이벤트에 () 를 붙이면 코드 라인이 실행될때 마다 실행됨
     return (<li> 
-                <button onClick={onSelect}>{children}</button>
+                <button className={isSelected?'active':''} onClick={onSelect}>{children}</button>
             </li>);
 }
