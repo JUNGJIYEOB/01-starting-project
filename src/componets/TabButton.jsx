@@ -19,7 +19,7 @@ export default function TabButton({ children, isSelected, ...props }) {
         * 
     */
   //이벤트에 () 를 붙이면 코드 라인이 실행될때 마다 실행됨
-  console.log('TabButton : ...props', { ...props });
+
   return (
     <li>
       <button className={isSelected ? 'active' : ''} {...props}>

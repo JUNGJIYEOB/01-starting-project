@@ -1,7 +1,14 @@
-import { CORE_CONCEPTS } from '../data';
+import { CORE_CONCEPTS } from '../data.js';
 import CoreConcept from './CoreConcept/CoreConcept';
 
-function CoreConcepts() {
+function CoreConcepts({ inputTitle }) {
+  console.log('inputTitle : ', inputTitle);
+  const returnCore = CORE_CONCEPTS.filter((data) =>
+    data.title.includes(inputTitle)
+  );
+
+  console.log('returnCore', ...returnCore);
+
   return (
     <section id='core-concepts'>
       <h2>Core Concepts</h2>
@@ -16,14 +23,20 @@ function CoreConcepts() {
           description={concepItem.description}
           image={concepItem.image}
         />
+{CORE_CONCEPTS.map((conceptItem) => (
+          <CoreConcept key={conceptItem.title} {...conceptItem} />
+        ))}
+
       ))}
       */}
         {/**1.동적 생성방법
          *  2)spread 연산자 이용
          */}
-        {CORE_CONCEPTS.map((conceptItem) => (
+
+        {returnCore.map((conceptItem) => (
           <CoreConcept key={conceptItem.title} {...conceptItem} />
         ))}
+        <CoreConcept {...returnCore[0]} />
       </ul>
     </section>
   );

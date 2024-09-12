@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { EXAMPLES } from '../../data'; //이름이 대문자로 시작하는 것 매우 중요
 import Section from '../Section';
 import TabButton from '../TabButton';
+import Tabs from '../Tabs';
 
 function Examples() {
   const [selectedTopic, setSelectedTopic] = useState(); //useState를 사용할 때 나오는 요소는 항상 2개
@@ -28,32 +29,6 @@ function Examples() {
 
   return (
     <Section title={'Example'} id='examples'>
-      <menu>
-        <TabButton
-          isSelected={selectedTopic === 'components'}
-          onClick={() => handleClick('components')}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === 'jsx'}
-          onClick={() => handleClick('jsx')}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === 'props'}
-          onClick={() => handleClick('props')}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === 'state'}
-          onClick={() => handleClick('state')}
-        >
-          State
-        </TabButton>
-      </menu>
       {/* 
           1.조건부 랜더링
             1) 삼항연산자_null 사용 
@@ -108,7 +83,38 @@ function Examples() {
       {/*1.조건부 랜더링
        *  3)컴포넌트 내부에서 if문 내부에서 변수에 재할당
        */}
-      {tabContents}
+      <Tabs /**JSX 슬롯 활용법 : 공통? 작업으로 틀 만들때 필요할 듯?  */
+        buttons={
+          <>
+            <TabButton
+              isSelected={selectedTopic === 'components'}
+              onClick={() => handleClick('components')}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'jsx'}
+              onClick={() => handleClick('jsx')}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'props'}
+              onClick={() => handleClick('props')}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'state'}
+              onClick={() => handleClick('state')}
+            >
+              State
+            </TabButton>
+          </>
+        }
+      >
+        {tabContents}
+      </Tabs>
     </Section>
   );
 }

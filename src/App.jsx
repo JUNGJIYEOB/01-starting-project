@@ -5,12 +5,11 @@ import Header from './componets/Header/Header.jsx';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [title, setTitle] = useState(0);
+  const [inputTitle, setTitle] = useState('');
   //01. title 상태를 가져오는 const 선언
   //02. app.jsx title 출력
   //03. 하위 CoreConcept으로 props 전달
-  //04. input만들어서 value 타이핑한 내용이, title로 들어가게
-
+  //04. input만들어서 value한 내용이, title로 들어가게 타이핑
 
   const onIncrease = () => {
     setCount((prevCount) => prevCount + 1);
@@ -18,12 +17,16 @@ function App() {
   const onDecrease = () => {
     setCount((prevCount) => prevCount - 1);
   };
+  const onInput = (event) => {
+    setTitle(event.target.value);
+  };
 
   return (
     <>
       <Header />
       <main>
-        <CoreConcepts />
+        <CoreConcepts inputTitle={inputTitle} />
+        <input type='text' id='text' onChange={onInput} />
         <Examples />
         <section>
           <label>{count}</label>
