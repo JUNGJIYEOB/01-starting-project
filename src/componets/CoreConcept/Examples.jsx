@@ -14,6 +14,34 @@ function Examples() {
 
   //1.조건부 랜더링_컴포넌트 내부에서 if문 내부에서 변수에 재할당
   let tabContents = <p>Please selct a topic</p>;
+  const tabConts = (
+    <>
+      <TabButton
+        isSelected={selectedTopic === 'components'}
+        onClick={() => handleClick('components')}
+      >
+        Components
+      </TabButton>
+      <TabButton
+        isSelected={selectedTopic === 'jsx'}
+        onClick={() => handleClick('jsx')}
+      >
+        JSX
+      </TabButton>
+      <TabButton
+        isSelected={selectedTopic === 'props'}
+        onClick={() => handleClick('props')}
+      >
+        Props
+      </TabButton>
+      <TabButton
+        isSelected={selectedTopic === 'state'}
+        onClick={() => handleClick('state')}
+      >
+        State
+      </TabButton>
+    </>
+  );
   if (selectedTopic) {
     tabContents = (
       <div id='tab-content'>
@@ -83,35 +111,9 @@ function Examples() {
       {/*1.조건부 랜더링
        *  3)컴포넌트 내부에서 if문 내부에서 변수에 재할당
        */}
-      <Tabs /**JSX 슬롯 활용법 : 공통? 작업으로 틀 만들때 필요할 듯?  */
-        buttons={
-          <>
-            <TabButton
-              isSelected={selectedTopic === 'components'}
-              onClick={() => handleClick('components')}
-            >
-              Components
-            </TabButton>
-            <TabButton
-              isSelected={selectedTopic === 'jsx'}
-              onClick={() => handleClick('jsx')}
-            >
-              JSX
-            </TabButton>
-            <TabButton
-              isSelected={selectedTopic === 'props'}
-              onClick={() => handleClick('props')}
-            >
-              Props
-            </TabButton>
-            <TabButton
-              isSelected={selectedTopic === 'state'}
-              onClick={() => handleClick('state')}
-            >
-              State
-            </TabButton>
-          </>
-        }
+      <Tabs /**tabConts=>JSX 슬롯 활용법(Wrapper ) : 공통? 작업으로 틀 만들때 필요할 듯?  custom->변수로 관리*/
+        buttons={tabConts}
+        buttonContainer='menu'
       >
         {tabContents}
       </Tabs>
