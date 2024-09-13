@@ -113,7 +113,7 @@ function Examples() {
        */}
       <Tabs /**tabConts=>JSX 슬롯 활용법(Wrapper ) : 공통? 작업으로 틀 만들때 필요할 듯?  custom->변수로 관리*/
         buttons={tabConts}
-        buttonContainer='menu'
+        ButtonContainer='menu' /*반드시 대문자로 작성하거나 상수나 변수로 재설정된 속성으로서 대문자로 시작 */
       >
         {tabContents}
       </Tabs>

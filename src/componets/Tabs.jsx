@@ -2,7 +2,7 @@
  * 이 컴포넌트의 목적 : 모든 종류의 탭에 적용해 앱의 다양한 위체이 있는 내용을 제어 하기 위함
  * => 재사용이 용이하게끔
  */
-function Tabs({ children, buttons, buttonContainer }) {
+function Tabs({ children, buttons, ButtonContainer }) {
   /**
    *꼭 기억하셔야 할 두 가지는 다음과 같습니다.
     먼저는 이 속성이 반드시
@@ -13,7 +13,10 @@ function Tabs({ children, buttons, buttonContainer }) {
     상수나 변수로서 재설정된 속성으로서
     대문자로 시작
 
-    2.식별자에는 문자열 이름을 사용하는데
+    2.식별자에는 문자열 이름을 
+    
+
+
     내장 요소인 menu, ul, 혹 div가 그 예시
     그리고 컴포넌트 함수를 사용해야만
     커스텀 컴포넌트에 적용이 됨
@@ -27,7 +30,6 @@ function Tabs({ children, buttons, buttonContainer }) {
 
 
    */
-  const ButtonContainer = buttonContainer;
 
   return (
     <>

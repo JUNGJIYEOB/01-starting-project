@@ -2,9 +2,11 @@ import { CORE_CONCEPTS } from '../data.js';
 import CoreConcept from './CoreConcept/CoreConcept';
 
 function CoreConcepts({ inputTitle }) {
-  const ReturnCore = CORE_CONCEPTS.filter((data) =>
-    data.title.includes(inputTitle)
-  );
+  const returnCore = !inputTitle
+    ? CORE_CONCEPTS
+    : CORE_CONCEPTS.filter((data) =>
+        data.title.toUpperCase().includes(inputTitle.toUpperCase())
+      );
 
   return (
     <section id='core-concepts'>
@@ -29,11 +31,10 @@ function CoreConcepts({ inputTitle }) {
         {/**1.동적 생성방법
          *  2)spread 연산자 이용
          */}
-        {/* 
+
         {returnCore.map((conceptItem) => (
           <CoreConcept key={conceptItem.title} {...conceptItem} />
-        ))} */}
-        <CoreConcept {...ReturnCore[0]} />
+        ))}
       </ul>
     </section>
   );
